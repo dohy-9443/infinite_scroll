@@ -13,7 +13,12 @@ const loadMore = async () => {
 };
 
 const onScroll = e => {
-  // do something (hint: e.target.scrollingElement)
+  // 구조 분해 할당
+  const {scrollHeight, scrollTop, clientHeight} = e.target.scrollingElement;
+
+  if (scrollTop + clientHeight === scrollHeight) {
+    loadMore()
+  }
 };
 
 document.addEventListener("scroll", onScroll);
